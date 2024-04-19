@@ -1,18 +1,9 @@
-def solution(s):
-    p = 0
-    y = 0
-    n = 0
-    for i in s:
-        if (i == 'p') | (i == 'P'):
-            p += 1
-        elif (i == 'y') | (i == 'Y'):
-            y += 1
-        else:
-            n += 1
-    if n == len(s):
-        answer = True
-    elif p == y:
-        answer = True
+def solution(S):
+    p = [x for x in S if (x == 'p') | (x == 'P')]
+    y = [x for x in S if (x == 'y') | (x == 'Y')]
+    if len(p) == len(y):
+        return True
+    elif (len(p) == 0) & (len(y) == 0):
+        return True
     else:
-        answer = False
-    return answer
+        return False
