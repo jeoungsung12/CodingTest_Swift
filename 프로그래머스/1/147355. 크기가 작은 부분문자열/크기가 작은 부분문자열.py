@@ -1,11 +1,11 @@
-def solution(t,p):
-    l = 0
-    for i in range(len(t)):
+def solution(T, P):
+    t = []
+    p = int(P)
+    for i in range(0,len(T)-(len(P)-1)):
         answer = ""
-        if i + len(p) > len(t):
-            break
-        for j in range(i, i+len(p)):
-            answer += t[j]
-        if int(answer) <= int(p):
-            l += 1
-    return l
+        for j in range(i, i+len(P)):
+            answer += T[j]
+        t.append(int(answer))
+    answer = [x for x in (t) if x <= p]
+    
+    return len(answer)
