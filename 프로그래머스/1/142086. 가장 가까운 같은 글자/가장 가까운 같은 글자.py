@@ -1,15 +1,14 @@
 def solution(s):
     answer = []
-    count = 0
-    answer.append(-1)
-    for i in range(1, len(s)):
-        for j in range(i-1, -1, -1):
-            if(s[i] == s[j]):
-                answer.append(i - j)
-                count += 1
+    for i in range(0,len(s)):
+        index = -1
+        for j in range(i,-1,-1):
+            if (s[i] == s[j]) & (i != j):
+                index = i - j
                 break
-        if(count == 0):
-            answer.append(-1)
-        count = 0
+        if index == -1:
+            answer.append(index)
+        else:
+            answer.append(index)
             
     return answer
