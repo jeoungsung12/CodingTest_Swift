@@ -1,43 +1,38 @@
-def solution(n, arr1, arr2):
-    answer = []
-    k = []
-    l1 = [[0] * n for _ in range(n)]
-    a1 = [[0] * n for _ in range(n)]
-    a2 = [[0] * n for _ in range(n)]
-    t = 0
-    cnt = n-1
-    s = ''
-    for i in range(len(arr1)):
-        while(arr1[i] > 0):
-            t = arr1[i] % 2
-            arr1[i] //= 2
-            a1[i][cnt] = t
-            cnt -= 1
-            #print(a1[i])
-        cnt = n-1
-    for i in range(len(arr2)):
-        while(arr2[i] > 0):
-            t = arr2[i] % 2
-            arr2[i] //= 2
-            a2[i][cnt] = t
-            cnt -= 1
-            #print(a1[i])
-        cnt = n-1
-    for i in range((n)):
-        for j in range(n):
-            if(a1[i][j] == 1) & (a2[i][j] == 1):
-                l1[i][j] = 1
-            elif(a1[i][j] == 1) | (a2[i][j] == 1):
-                l1[i][j] = 1
+def solution(n,arr1,arr2):
+    answer1 = ""
+    result = [[]]
+    for arr in arr1:
+        for i in range(n):
+            if arr % 2 == 0:
+                answer1 += " "
             else:
-                l1[i][j] = 0
-    for i in range(n):
-        for j in range(n):
-            if(l1[i][j] == 1):
-                s += '#'
+                answer1 += "#"
+            arr = arr // 2
+        answer1 += "\n"
+    answer2 = ""
+    for arr in arr2:
+        for i in range(n):
+            if arr % 2 == 0:
+                answer2 += " "
             else:
-                s += ' '
-        answer.append(s)
-        s = ''
-    
-    return answer
+                answer2 += "#"
+            arr = arr // 2
+        answer2 += "\n"
+    answer = [[0 for _ in range(n)] for _ in range(n)]
+    index = 0
+    for i in range(len(answer1)):
+        if (answer1[i] == '#') & (answer2[i] == "#"):
+            answer[index].append("#")
+        elif ((answer1[i] == "#") | (answer2[i] == "#")):
+            answer[index].append("#")
+        elif ((answer1[i] == " ") & (answer2[i] == " ")):
+            answer[index].append(" ")
+        else:
+            index += 1
+    result = []
+    for a in answer:
+        s = ""
+        for d in range(len(a)-1, n-1, -1):
+            s += a[d]
+        result.append(s)
+    return result
