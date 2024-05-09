@@ -1,10 +1,10 @@
-def solution(array, commands):
+def solution(arr,cmd):
     answer = []
-    k = []
-    for i in range(len(commands)):
-        for j in range(commands[i][0]-1, commands[i][1]):
-            k.append(array[j])
-        k = sorted(k)
-        answer.append(k[commands[i][2]-1])
-        k = []
+    for c in cmd:
+        l = []
+        for j in range(c[0]-1,c[1]):
+            l.append(arr[j])
+        l = sorted(l)
+        answer.append(l[c[2]-1])
+    
     return answer
