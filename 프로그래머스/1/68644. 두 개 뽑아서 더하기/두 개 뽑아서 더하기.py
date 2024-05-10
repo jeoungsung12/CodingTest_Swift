@@ -1,10 +1,8 @@
-def solution(numbers):
+def solution(n):
     answer = []
-    k = []
-    for i in range(len(numbers)):
-        for j in range(i+1, len(numbers)):
-            answer.append(numbers[i] + numbers[j])
-    answer = set(answer)
+    for i in range(len(n)):
+        for j in range(i+1,len(n)):
+            answer.append(n[i]+n[j])
+    answer = sorted(set(answer))
     answer = list(answer)
-    answer = sorted(answer)
     return answer
